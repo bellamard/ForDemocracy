@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class marchePersonnage : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class marchePersonnage : MonoBehaviour
     public float speed =5f;
     Rigidbody2D rb;
     Animator anim;
+
+    [SerializeField]
+    GameObject imGameOver;
     
     void Start()
     {
@@ -49,4 +53,15 @@ public class marchePersonnage : MonoBehaviour
             anim.SetInteger("dir", 4);
         }
     }
+
+    public void GameOver(){
+        imGameOver.SetActive(true);
+        StartCoroutine(LoadGameOver());
+    }
+
+    IEnumerator LoadGameOver(){
+        yield return new WaitForSeconds(5f);
+         SceneManager.LoadScene(0);
+    }
+
 }

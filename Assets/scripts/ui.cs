@@ -10,6 +10,8 @@ public class ui : MonoBehaviour
     int time;
     [SerializeField]
     Text MyTime;
+
+    
     void Start()
     {
         
@@ -20,10 +22,9 @@ public class ui : MonoBehaviour
         while(time>0){
             yield return new WaitForSeconds(1f);
             time--;
-            Debug.Log("Minuterie du temps ");
             MyTime.text="ngonga:"+time;
         }
-        
+        GameObject.Find("player").GetComponent<marchePersonnage>().GameOver();
         
     }
 
